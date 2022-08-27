@@ -30,12 +30,8 @@ namespace API_GS
         {
 
             services.AddControllers();
-            services.AddDbContext<ServiceContext>(opt =>
-                                               opt.UseInMemoryDatabase("ServiceList"));
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "API_GS", Version = "v1" });
-            //});
+            services.AddDbContext<EFServiceDBContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddTransient<IServiceRepository, EFServiceRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

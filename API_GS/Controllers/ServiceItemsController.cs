@@ -9,49 +9,49 @@ using API_GS.Models;
 
 namespace API_GS.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/serviceitems")]
     [ApiController]
     public class ServiceItemsController : ControllerBase
     {
-        private readonly ServiceContext _context;
+        private readonly EFServiceDBContext _context;
 
-        public ServiceItemsController(ServiceContext context)
+        public ServiceItemsController(EFServiceDBContext context)
         {
             _context = context;
         }
 
         // GET: api/ServiceItems
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ServiceItems>>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<ServiceItem>>> GetServiceItems()
         {
-            return await _context.TodoItems.ToListAsync();
+            return await _context.ServiceItems.ToListAsync();
         }
 
         // GET: api/ServiceItems/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ServiceItems>> GetServiceItems(Guid id)
+        public async Task<ActionResult<ServiceItem>> GetServiceItem(int id)
         {
-            var serviceItems = await _context.TodoItems.FindAsync(id);
+            var serviceItem = await _context.ServiceItems.FindAsync(id);
 
-            if (serviceItems == null)
+            if (serviceItem == null)
             {
                 return NotFound();
             }
 
-            return serviceItems;
+            return serviceItem;
         }
 
         // PUT: api/ServiceItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutServiceItems(Guid id, ServiceItems serviceItems)
+        public async Task<IActionResult> PutServiceItem(int id, ServiceItem serviceItem)
         {
-            if (id != serviceItems.Id)
+            if (id != serviceItem.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(serviceItems).State = EntityState.Modified;
+            _context.Entry(serviceItem).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace API_GS.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ServiceItemsExists(id))
+                if (!ServiceItemExists(id))
                 {
                     return NotFound();
                 }
@@ -75,33 +75,33 @@ namespace API_GS.Controllers
         // POST: api/ServiceItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ServiceItems>> PostServiceItems(ServiceItems serviceItems)
+        public async Task<ActionResult<ServiceItem>> PostServiceItem(ServiceItem serviceItem)
         {
-            _context.TodoItems.Add(serviceItems);
+            _context.ServiceItems.Add(serviceItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetServiceItems", new { id = serviceItems.Id }, serviceItems);
+            return CreatedAtAction(nameof(GetServiceItem), new { id = serviceItem.Id }, serviceItem);
         }
 
         // DELETE: api/ServiceItems/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteServiceItems(Guid id)
+        public async Task<IActionResult> DeleteServiceItem(int id)
         {
-            var serviceItems = await _context.TodoItems.FindAsync(id);
-            if (serviceItems == null)
+            var serviceItem = await _context.ServiceItems.FindAsync(id);
+            if (serviceItem == null)
             {
                 return NotFound();
             }
 
-            _context.TodoItems.Remove(serviceItems);
+            _context.ServiceItems.Remove(serviceItem);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ServiceItemsExists(Guid id)
+        private bool ServiceItemExists(int id)
         {
-            return _context.TodoItems.Any(e => e.Id == id);
+            return _context.ServiceItems.Any(e => e.Id == id);
         }
     }
 }
