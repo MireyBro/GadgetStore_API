@@ -26,9 +26,16 @@ namespace API_GS.Domain.EF
             Context.Contacts.Add(contact);
             Context.SaveChanges();
         }
-        public void Update(Contact contact)
+        public void Update(Contact updatedContact)
         {
-            Context.Contacts.Update(contact);
+            Contact currentContact = Get(updatedContact.ContactId);
+            currentContact.Adress = updatedContact.Adress;
+            currentContact.Phone1 = updatedContact.Phone1;
+            currentContact.Phone2 = updatedContact.Phone2;
+            currentContact.FacebookLink= updatedContact.FacebookLink;
+            currentContact.InstaLink= updatedContact.InstaLink;
+
+            Context.Contacts.Update(currentContact);
             Context.SaveChanges();
         }
         public Contact Delete(int id)

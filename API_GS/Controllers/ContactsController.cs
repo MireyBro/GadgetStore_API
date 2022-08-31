@@ -47,11 +47,7 @@ namespace API_GS.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutContact(int id, Contact contact)
         {
-            if (id != contact.ContactId)
-            {
-                return BadRequest();
-            }
-
+          
             _context.Entry(contact).State = EntityState.Modified;
 
             try

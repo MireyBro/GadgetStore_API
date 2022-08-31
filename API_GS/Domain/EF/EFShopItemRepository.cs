@@ -25,12 +25,12 @@ namespace API_GS.Domain.EF
             Context.ShopItems.Add(item);
             Context.SaveChanges();
         }
-        public void Update(ShopItem updatedServiceItem)
+        public void Update(ShopItem updatedItem)
         {
-            ShopItem currentItem = Get(updatedServiceItem.ItemId);
-            currentItem.Title = updatedServiceItem.Title;
-            currentItem.Text = updatedServiceItem.Text;
-            currentItem.Image = updatedServiceItem.Image;
+            ShopItem currentItem = Get(updatedItem.ItemId);
+            currentItem.Title = updatedItem.Title;
+            currentItem.Text = updatedItem.Text;
+            currentItem.Image = updatedItem.Image;
 
             Context.ShopItems.Update(currentItem);
             Context.SaveChanges();

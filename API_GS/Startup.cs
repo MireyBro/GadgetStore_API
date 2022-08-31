@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using API_GS.Models;
 using API_GS.Domain.EF;
 using API_GS.Domain.EF.Conections;
+using API_GS.Domain.Abstract;
 
 namespace API_GS
 {
@@ -47,6 +48,7 @@ namespace API_GS
             services.AddControllers();
             services.AddDbContext<EFGsDBContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             services.AddTransient<IShopItemRepository, EFShopItemRepository>();
+            services.AddTransient<IContactRepository, EFContactRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,54 +5,54 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using API_GS.Models;
 using API_GS.Domain.EF.Conections;
+using API_GS.Models;
 
 namespace API_GS.Controllers
 {
-    [Route("api/items")]
+    [Route("api/shopitems")]
     [ApiController]
-    public class ItemsController : ControllerBase
+    public class ShopItemsController : ControllerBase
     {
         private readonly EFGsDBContext _context;
 
-        public ItemsController(EFGsDBContext context)
+        public ShopItemsController(EFGsDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/Items
+        // GET: api/ShopItems
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ShopItem>>> GetServiceItems()
+        public async Task<ActionResult<IEnumerable<ShopItem>>> GetShopItems()
         {
             return await _context.ShopItems.ToListAsync();
         }
 
-        // GET: api/Items/5
+        // GET: api/ShopItems/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ShopItem>> GetItems(int id)
+        public async Task<ActionResult<ShopItem>> GetShopItem(int id)
         {
-            var items = await _context.ShopItems.FindAsync(id);
+            var shopItem = await _context.ShopItems.FindAsync(id);
 
-            if (items == null)
+            if (shopItem == null)
             {
                 return NotFound();
             }
 
-            return items;
+            return shopItem;
         }
 
-        // PUT: api/Items/5
+        // PUT: api/ShopItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutItems(int id, ShopItem items)
+        public async Task<IActionResult> PutShopItem(int id, ShopItem shopItem)
         {
-            if (id != items.ItemId)
+            if (id != shopItem.ItemId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(items).State = EntityState.Modified;
+            _context.Entry(shopItem).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace API_GS.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ItemsExists(id))
+                if (!ShopItemExists(id))
                 {
                     return NotFound();
                 }
@@ -73,34 +73,34 @@ namespace API_GS.Controllers
             return NoContent();
         }
 
-        // POST: api/Items
+        // POST: api/ShopItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ShopItem>> PostItems(ShopItem items)
+        public async Task<ActionResult<ShopItem>> PostShopItem(ShopItem shopItem)
         {
-            _context.ShopItems.Add(items);
+            _context.ShopItems.Add(shopItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetItems), new { id = items.ItemId }, items);
+            return CreatedAtAction(nameof(GetShopItem), new { id = shopItem.ItemId }, shopItem);
         }
 
-        // DELETE: api/Items/5
+        // DELETE: api/ShopItems/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteItems(int id)
+        public async Task<IActionResult> DeleteShopItem(int id)
         {
-            var items = await _context.ShopItems.FindAsync(id);
-            if (items == null)
+            var shopItem = await _context.ShopItems.FindAsync(id);
+            if (shopItem == null)
             {
                 return NotFound();
             }
 
-            _context.ShopItems.Remove(items);
+            _context.ShopItems.Remove(shopItem);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ItemsExists(int id)
+        private bool ShopItemExists(int id)
         {
             return _context.ShopItems.Any(e => e.ItemId == id);
         }
