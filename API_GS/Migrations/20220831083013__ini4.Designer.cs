@@ -3,14 +3,16 @@ using API_GS.Domain.EF.Conections;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API_GS.Migrations
 {
     [DbContext(typeof(EFGsDBContext))]
-    partial class EFGsDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220831083013__ini4")]
+    partial class _ini4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

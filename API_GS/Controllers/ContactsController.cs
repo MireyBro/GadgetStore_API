@@ -5,54 +5,54 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using API_GS.Models;
 using API_GS.Domain.EF.Conections;
+using API_GS.Models;
 
 namespace API_GS.Controllers
 {
-    [Route("api/items")]
+    [Route("api/contacts")]
     [ApiController]
-    public class ItemsController : ControllerBase
+    public class ContactsController : ControllerBase
     {
         private readonly EFGsDBContext _context;
 
-        public ItemsController(EFGsDBContext context)
+        public ContactsController(EFGsDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/Items
+        // GET: api/Contacts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ShopItem>>> GetServiceItems()
+        public async Task<ActionResult<IEnumerable<Contact>>> GetContacts()
         {
-            return await _context.ShopItems.ToListAsync();
+            return await _context.Contacts.ToListAsync();
         }
 
-        // GET: api/Items/5
+        // GET: api/Contacts/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ShopItem>> GetItems(int id)
+        public async Task<ActionResult<Contact>> GetContact(int id)
         {
-            var items = await _context.ShopItems.FindAsync(id);
+            var contact = await _context.Contacts.FindAsync(id);
 
-            if (items == null)
+            if (contact == null)
             {
                 return NotFound();
             }
 
-            return items;
+            return contact;
         }
 
-        // PUT: api/Items/5
+        // PUT: api/Contacts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutItems(int id, ShopItem items)
+        public async Task<IActionResult> PutContact(int id, Contact contact)
         {
-            if (id != items.ItemId)
+            if (id != contact.ContactId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(items).State = EntityState.Modified;
+            _context.Entry(contact).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace API_GS.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ItemsExists(id))
+                if (!ContactExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace API_GS.Controllers
             return NoContent();
         }
 
-        // POST: api/Items
+        // POST: api/Contacts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ShopItem>> PostItems(ShopItem items)
+        public async Task<ActionResult<Contact>> PostContact(Contact contact)
         {
-            _context.ShopItems.Add(items);
+            _context.Contacts.Add(contact);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetItems), new { id = items.ItemId }, items);
+            return CreatedAtAction(nameof(GetContact), new { id = contact.ContactId }, contact);
         }
 
-        // DELETE: api/Items/5
+        // DELETE: api/Contacts/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteItems(int id)
+        public async Task<IActionResult> DeleteContact(int id)
         {
-            var items = await _context.ShopItems.FindAsync(id);
-            if (items == null)
+            var contact = await _context.Contacts.FindAsync(id);
+            if (contact == null)
             {
                 return NotFound();
             }
 
-            _context.ShopItems.Remove(items);
+            _context.Contacts.Remove(contact);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ItemsExists(int id)
+        private bool ContactExists(int id)
         {
-            return _context.ShopItems.Any(e => e.ItemId == id);
+            return _context.Contacts.Any(e => e.ContactId == id);
         }
     }
 }

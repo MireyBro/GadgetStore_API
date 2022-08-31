@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 using API_GS.Models;
+using API_GS.Domain.EF.Conections;
 
 namespace API_GS.Domain.EF
 {
@@ -8,6 +8,10 @@ namespace API_GS.Domain.EF
     {
 
         private EFGsDBContext Context;
+        public EFShopItemRepository(EFGsDBContext context)
+        {
+            Context = context;
+        }
         public IEnumerable<ShopItem> Get()
         {
             return Context.ShopItems;
@@ -15,10 +19,6 @@ namespace API_GS.Domain.EF
         public ShopItem Get(int Id)
         {
             return Context.ShopItems.Find(Id);
-        }
-        public EFShopItemRepository(EFGsDBContext context)
-        {
-            Context = context;
         }
         public void Create(ShopItem item)
         {
@@ -38,15 +38,15 @@ namespace API_GS.Domain.EF
 
         public ShopItem Delete(int Id)
         {
-            ShopItem todoItem = Get(Id);
+            ShopItem item = Get(Id);
 
-            if (todoItem != null)
+            if (item != null)
             {
-                Context.ShopItems.Remove(todoItem);
+                Context.ShopItems.Remove(item);
                 Context.SaveChanges();
             }
 
-            return todoItem;
+            return item;
         }
     }
 }

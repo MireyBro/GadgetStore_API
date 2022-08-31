@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using API_GS.Models;
 using API_GS.Domain.EF;
+using API_GS.Domain.EF.Conections;
 
 namespace API_GS
 {

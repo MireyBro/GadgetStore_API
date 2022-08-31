@@ -1,7 +1,7 @@
 ﻿using API_GS.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace API_GS.Domain.EF
+namespace API_GS.Domain.EF.Conections
 {
     public class EFGsDBContext : DbContext
     {
@@ -11,6 +11,7 @@ namespace API_GS.Domain.EF
         }
 
         public DbSet<ShopItem> ShopItems { get; set; }
-        
+        public DbSet<Contact> Contacts { get; set; }
+
     }
 }
