@@ -141,3 +141,8 @@ C:\Users\Назарко\source\repos\API_GS\API_GS\bin\Debug\net5.0\appsetting.D
 C:\Users\Назарко\source\repos\API_GS\API_GS\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\Назарко\source\repos\API_GS\API_GS\bin\Debug\net5.0\Microsoft.AspNetCore.Server.Kestrel.Https.dll
 C:\Users\Назарко\source\repos\API_GS\API_GS\bin\Debug\net5.0\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
+C:\Users\Назарко\source\repos\API_GS\API_GS\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Назарко\source\repos\API_GS\API_GS\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Назарко\source\repos\API_GS\API_GS\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\Назарко\source\repos\API_GS\API_GS\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Назарко\source\repos\API_GS\API_GS\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll

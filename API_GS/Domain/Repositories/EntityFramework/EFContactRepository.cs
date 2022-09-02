@@ -6,7 +6,7 @@ namespace API_GS.Domain.EF
 {
     public class EFContactRepository : IContactRepository
     {
-        private EFGsDBContext Context;
+        private readonly EFGsDBContext Context;
         public EFContactRepository(EFGsDBContext context)
         {
             Context = context;

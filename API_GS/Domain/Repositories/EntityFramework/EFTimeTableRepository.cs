@@ -8,7 +8,7 @@ namespace API_GS.Domain.EF
 {
     public class EFTimeTableRepository : ITimeTableRepository
     {
-        private EFGsDBContext Context;
+        private readonly EFGsDBContext Context;
 
         public EFTimeTableRepository(EFGsDBContext context)
         {

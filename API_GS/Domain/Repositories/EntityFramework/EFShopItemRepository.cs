@@ -7,7 +7,7 @@ namespace API_GS.Domain.EF
     public class EFShopItemRepository : IShopItemRepository
     {
 
-        private EFGsDBContext Context;
+        private readonly EFGsDBContext Context;
 
         public EFShopItemRepository(EFGsDBContext context)
         {

@@ -38,6 +38,7 @@ namespace API_GS
 
 
             services.AddControllers();
+            services.AddAutoMapper(typeof(UserProfile));
             services.AddDbContext<EFGsDBContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));           
             services.AddTransient<IShopItemRepository, EFShopItemRepository>();
             services.AddTransient<IContactRepository, EFContactRepository>();
@@ -56,6 +57,7 @@ namespace API_GS
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            
 
             app.UseCors(MyAllowSpecificOrigins);
 

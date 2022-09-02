@@ -9,6 +9,6 @@ namespace API_GS.Domain.EF.Entities
         public int TimeTableId { get; set; }
         public string Day { get; set; }
         public string TimeOpened { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        
     }
 }
