@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using API_GS.Domain.EF.Conections;
-using API_GS.Models;
+using API_GS.Domain.EF.Entities;
+using API_GS.Domain;
 
 namespace API_GS.Controllers
 {

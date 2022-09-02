@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Net.NetworkInformation;
 
-namespace API_GS.Models
+namespace API_GS.Domain.EF.Entities
 {
     public class Contact
     {

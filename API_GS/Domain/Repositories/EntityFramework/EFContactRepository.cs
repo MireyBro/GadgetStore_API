@@ -1,7 +1,6 @@
 ﻿using API_GS.Domain.Abstract;
-using API_GS.Domain.EF.Conections;
 using System.Collections.Generic;
-using API_GS.Models;
+using API_GS.Domain.EF.Entities;
 
 namespace API_GS.Domain.EF
 {

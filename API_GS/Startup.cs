@@ -1,21 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using API_GS.Models;
 using API_GS.Domain.EF;
-using API_GS.Domain.EF.Conections;
 using API_GS.Domain.Abstract;
+using API_GS.Domain;
 
 namespace API_GS
 {
@@ -46,9 +38,10 @@ namespace API_GS
 
 
             services.AddControllers();
-            services.AddDbContext<EFGsDBContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddDbContext<EFGsDBContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));           
             services.AddTransient<IShopItemRepository, EFShopItemRepository>();
             services.AddTransient<IContactRepository, EFContactRepository>();
+            services.AddTransient<ITimeTableRepository, EFTimeTableRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

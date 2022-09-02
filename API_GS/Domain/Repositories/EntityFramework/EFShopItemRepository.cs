@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using API_GS.Models;
-using API_GS.Domain.EF.Conections;
+using API_GS.Domain.EF.Entities;
 
 namespace API_GS.Domain.EF
 {
@@ -8,6 +8,7 @@ namespace API_GS.Domain.EF
     {
 
         private EFGsDBContext Context;
+
         public EFShopItemRepository(EFGsDBContext context)
         {
             Context = context;

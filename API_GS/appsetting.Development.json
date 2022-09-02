@@ -1,0 +1,17 @@
+	{
+		"ConnectionStrings": {
+
+			"DefaultConnection": "Server=DESKTOP-C7U0QV1;Database=Service;Trusted_Connection = True;"
+
+		},
+
+		"Secret": "secretkeyclient0",
+		"Logging": {
+			"LogLevel": {
+				"Default": "Information",
+				"Microsoft": "Warning",
+				"Microsoft.Hosting.Lifetime": "Information"
+			}
+		},
+		"AllowedHosts": "*"
+	}

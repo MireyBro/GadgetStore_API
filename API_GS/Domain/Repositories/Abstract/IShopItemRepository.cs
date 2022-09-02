@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using API_GS.Domain.EF.Entities;
+using System.Collections.Generic;
 
 namespace API_GS.Models
 {
